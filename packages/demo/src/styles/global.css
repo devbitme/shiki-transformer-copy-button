@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+/* Safelist */
+@source inline('p-{1..4}');
+@source inline('relative');
+@source inline('rounded-md');
+@source inline('shadow');

@@ -1,0 +1,20 @@
+{
+    "name": "shiki-transformer-copy-button",
+    "version": "1.0.0",
+    "description": "Shiki transformer to add copy buttons to code blocks",
+    "main": "index.js",
+    "scripts": {
+        "build": "tsc",
+        "test": "jest",
+        "dev": "pnpm --filter ./packages/demo run dev"
+    },
+    "keywords": [
+        "shiki",
+        "transformer",
+        "copy",
+        "button",
+        "code-block"
+    ],
+    "author": "Silbad",
+    "license": "MIT"
+}
