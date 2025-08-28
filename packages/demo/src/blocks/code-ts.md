@@ -2,9 +2,9 @@
 author: 'Silbad'
 ---
 
-## Example with svg inline
+## Demo
 
 ```ts
-let message: string = 'Hello, World!';
+let message: string = 'Hello, Shiki Friends!';
 console.log(message);
 ```
