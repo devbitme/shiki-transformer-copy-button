@@ -2,6 +2,8 @@
     "name": "shiki-transformer-copy-button",
     "version": "1.0.0",
     "description": "Shiki transformer to add copy buttons to code blocks",
+    "author": "Silbad",
+    "license": "MIT",
     "main": "index.js",
     "scripts": {
         "build": "tsc",
@@ -14,7 +16,5 @@
         "copy",
         "button",
         "code-block"
-    ],
-    "author": "Silbad",
-    "license": "MIT"
+    ]
 }

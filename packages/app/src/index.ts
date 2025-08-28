@@ -21,7 +21,7 @@ export function addCopyButton(options: Options = {}): ShikiTransformer {
     const iconSuccess = options.iconSuccess === undefined ? s('svg',
         { viewBox: '0 0 16 16', xmlns: 'http://www.w3.org/2000/svg' },
         [
-            s('path', { d: 'M11 5v1h1V5h-1zm0 1h-1v1h1V6zm-1 1H9v1h1V7zM9 8H8v1h1V8zM8 9H7v1h1V9zm-1 1H6v1h1v-1zm-1 0V9H5v1h1zM5 9V8H4v1h1z' })
+            s('path', { d: 'M12.146 4.469 6.5 10.115 3.854 7.47l-.708.709L6.5 11.53l6.354-6.353Z' })
         ]
     ) : options.iconSuccess;
     const textCopy = options.textCopy === undefined ? 'copy' : options.textCopy;
