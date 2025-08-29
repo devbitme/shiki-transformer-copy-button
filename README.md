@@ -1,10 +1,10 @@
-# shiki-transformer-copy-button
+# @devbitme/shiki-transformer-copy-button
 
 ## Install
 
 Install the package:
 
-`pnpm install -D shiki-transformer-copy-button`
+`pnpm install -D @devbitme/shiki-transformer-copy-button`
 
 Add the transformer in astro.config.mjs file
 
@@ -12,7 +12,7 @@ Add the transformer in astro.config.mjs file
 // @ts-check
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
-import { addCopyButton } from 'shiki-transformer-copy-button';
+import { addCopyButton } from '@devbitme/shiki-transformer-copy-button';
 
 // https://astro.build/config
 export default defineConfig({
@@ -100,3 +100,8 @@ Bump version, then build and publish:
 ## License
 
 MIT
+
+# Credits
+
+- https://github.com/joshnuss/shiki-transformer-copy-button
+- https://github.com/selemondev/shiki-transformer-copy-button

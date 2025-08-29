@@ -1,5 +1,5 @@
 {
-	"name": "shiki-transformer-copy-button",
+	"name": "@devbitme/shiki-transformer-copy-button",
 	"version": "1.0.0",
 	"description": "A Shiki Transformer that adds a copy button styled with Tailwind",
 	"author": "Silbad",
