@@ -13,7 +13,7 @@ export default defineConfig({
 				toggleDelay: 3500,
 				textCopy: 'copier',
 				textSuccess: 'copié'
-			})],
+			})]
 		},
 	},
 	vite: {
