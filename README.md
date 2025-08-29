@@ -95,7 +95,7 @@ Add some Tailwind CSS styling:
 
 Bump version, then build and publish:
 
-`pnpm build && pnpm publish`
+`pnpm build && pnpm publish --access public`
 
 ## License
 
