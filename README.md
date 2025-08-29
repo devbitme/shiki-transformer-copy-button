@@ -2,7 +2,12 @@
 
 ## Install
 
-- astro.config.mjs
+Install the package:
+
+`pnpm install -D shiki-transformer-copy-button`
+
+Add the transformer in astro.config.mjs file
+
 ```mjs
 // @ts-check
 import { defineConfig } from 'astro/config';
@@ -28,7 +33,10 @@ export default defineConfig({
 });
 ```
 
-- pages/index.ts, add style
+## Style
+
+Add some Tailwind CSS styling:
+
 ```html
 <style lang="postcss" is:global>
 	@reference '../styles/global.css';
@@ -75,10 +83,20 @@ export default defineConfig({
 </style>
 ```
 
-## options
+## Options
 
 - toggleDelay: number | undefined (default: **3000**)
 - iconCopy: null | undefined (default: **copy svg icon**)
 - iconSuccess: null | undefined (default: **check svg icon**)
 - textCopy: string | null | undefined (default: **"copy"**)
 - textSuccess: string | null | undefined (default: **"copied"**)
+
+## Publish package
+
+Bump version, then build and publish:
+
+`pnpm build && pnpm publish`
+
+## License
+
+MIT
