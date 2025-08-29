@@ -1,13 +1,11 @@
 {
-    "name": "shiki-transformer-copy-button",
+    "name": "shiki-transformer-copy-button-tailwind-astro",
     "version": "1.0.0",
-    "description": "Shiki transformer to add copy buttons to code blocks",
+    "description": "A Shiki Transformer that adds a copy button styled with Tailwind CSS, demo with Astro.js",
     "author": "Silbad",
     "license": "MIT",
     "main": "index.js",
     "scripts": {
-        "build": "tsc",
-        "test": "jest",
         "dev": "pnpm --filter ./packages/demo run dev"
     },
     "keywords": [
@@ -15,6 +13,7 @@
         "transformer",
         "copy",
         "button",
-        "code-block"
+        "code-block",
+        "tailwindcss"
     ]
 }
