@@ -1,6 +1,6 @@
 {
     "name": "shiki-transformer-copy-button-tailwind-astro",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "A Shiki Transformer that adds a copy button styled with Tailwind CSS, demo with Astro.js",
     "author": "Silbad",
     "license": "MIT",

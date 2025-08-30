@@ -1,9 +1,14 @@
 {
 	"name": "@devbitme/shiki-transformer-copy-button",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"description": "A Shiki Transformer that adds a copy button styled with Tailwind",
 	"author": "Silbad",
 	"license": "MIT",
+	"homepage": "https://devbitme.github.io/shiki-transformer-copy-button",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/devbitme/shiki-transformer-copy-button.git"
+	},
 	"type": "module",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
