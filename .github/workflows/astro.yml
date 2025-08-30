@@ -37,28 +37,62 @@ jobs:
       - name: Detect package manager
         id: detect-package-manager
         run: |
+          # If this repo uses pnpm (monorepo lockfile at repo root), prefer that
+          if [ -f "${{ github.workspace }}/pnpm-lock.yaml" ]; then
+            echo "manager=pnpm" >> $GITHUB_OUTPUT
+            echo "command=install" >> $GITHUB_OUTPUT
+            echo "runner=pnpm" >> $GITHUB_OUTPUT
+            echo "cache-dependency-path=${{ github.workspace }}/pnpm-lock.yaml" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          # Prefer the package manager and lockfile inside BUILD_PATH (packages/demo)
+          if [ -f "${{ env.BUILD_PATH }}/yarn.lock" ]; then
+            echo "manager=yarn" >> $GITHUB_OUTPUT
+            echo "command=install" >> $GITHUB_OUTPUT
+            echo "runner=yarn" >> $GITHUB_OUTPUT
+            echo "cache-dependency-path=${{ github.workspace }}/${{ env.BUILD_PATH }}/yarn.lock" >> $GITHUB_OUTPUT
+            exit 0
+          elif [ -f "${{ env.BUILD_PATH }}/package-lock.json" ]; then
+            echo "manager=npm" >> $GITHUB_OUTPUT
+            echo "command=ci" >> $GITHUB_OUTPUT
+            echo "runner=npx --no-install" >> $GITHUB_OUTPUT
+            echo "cache-dependency-path=${{ github.workspace }}/${{ env.BUILD_PATH }}/package-lock.json" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          # Fallback to repository root if nothing found in BUILD_PATH
           if [ -f "${{ github.workspace }}/yarn.lock" ]; then
             echo "manager=yarn" >> $GITHUB_OUTPUT
             echo "command=install" >> $GITHUB_OUTPUT
             echo "runner=yarn" >> $GITHUB_OUTPUT
-            echo "lockfile=yarn.lock" >> $GITHUB_OUTPUT
+            echo "cache-dependency-path=${{ github.workspace }}/yarn.lock" >> $GITHUB_OUTPUT
             exit 0
-          elif [ -f "${{ github.workspace }}/package.json" ]; then
+          elif [ -f "${{ github.workspace }}/package-lock.json" ]; then
             echo "manager=npm" >> $GITHUB_OUTPUT
             echo "command=ci" >> $GITHUB_OUTPUT
             echo "runner=npx --no-install" >> $GITHUB_OUTPUT
-            echo "lockfile=package-lock.json" >> $GITHUB_OUTPUT
+            echo "cache-dependency-path=${{ github.workspace }}/package-lock.json" >> $GITHUB_OUTPUT
             exit 0
-          else
-            echo "Unable to determine package manager"
-            exit 1
           fi
+
+          # If we couldn't find any lockfile, fall back to package.json in BUILD_PATH
+          if [ -f "${{ env.BUILD_PATH }}/package.json" ]; then
+            echo "manager=npm" >> $GITHUB_OUTPUT
+            echo "command=ci" >> $GITHUB_OUTPUT
+            echo "runner=npx --no-install" >> $GITHUB_OUTPUT
+            echo "cache-dependency-path=${{ github.workspace }}/${{ env.BUILD_PATH }}/package.json" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          echo "Unable to determine package manager or lockfile"
+          exit 1
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: "20"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
-          cache-dependency-path: ${{ env.BUILD_PATH }}/${{ steps.detect-package-manager.outputs.lockfile }}
+          cache-dependency-path: ${{ steps.detect-package-manager.outputs.cache-dependency-path }}
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
@@ -79,7 +113,6 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     needs: build
     runs-on: ubuntu-latest
     name: Deploy
