@@ -1,7 +1,13 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
-import { addCopyButton } from '../app/src/index.js';
+
+// Use the local source during development (NODE_ENV='dev' or 'development'),
+// otherwise import the published package for production.
+const stcb = (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'dev')
+	? await import('../app/src/index.js')
+	: await import('@devbitme/shiki-transformer-copy-button');
+const { addCopyButton } = stcb;
 
 // https://astro.build/config
 export default defineConfig({
