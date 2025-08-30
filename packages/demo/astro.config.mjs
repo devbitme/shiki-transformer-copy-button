@@ -11,6 +11,8 @@ const { addCopyButton } = stcb;
 
 // https://astro.build/config
 export default defineConfig({
+	site: 'https://devbitme.github.io',
+	base: '/shiki-transformer-copy-button',
 	markdown: {
 		shikiConfig: {
 			theme: 'github-dark',
