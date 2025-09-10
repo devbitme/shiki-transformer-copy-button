@@ -18,7 +18,12 @@ declare global {
 
 		<script defer data-domain="devbitme.github.io" src="https://analytics.devbit.me/js/script.file-downloads.hash.outbound-links.pageview-props.tagged-events.js"></script>
 
-		<script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
+		<script>
+			window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }
+			document.addEventListener('DOMContentLoaded', () => {
+				window.plausible('pageview', { props: { repo: 'shiki-transformer-copy-button' } })
+			})
+		</script>
 
 	</head>
 	<body>
