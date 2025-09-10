@@ -1,5 +1,11 @@
 ---
 import "../styles/global.css";
+
+declare global {
+	interface Window {
+		plausible: any;
+	}
+}
 ---
 <!doctype html>
 <html lang="en" class="scroll-smooth">
@@ -9,6 +15,10 @@ import "../styles/global.css";
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>DEMO - shiki-transformer-copy-button</title>
+
+		<script defer data-domain="devbitme.github.io/shiki-transformer-copy-button" src="https://analytics.devbit.me/js/script.file-downloads.hash.outbound-links.pageview-props.tagged-events.js"></script>
+
+		<script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
 	</head>
 	<body>
 		<slot />
